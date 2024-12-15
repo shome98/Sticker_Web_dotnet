@@ -55,6 +55,20 @@ namespace Sticker_web.Services
         {
             try
             {
+                // Get the web root path
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+                // Check if the product has an associated image
+                if (!string.IsNullOrEmpty(obj.ImageUrl))
+                {
+                    // Construct the full path to the image file
+                    var imagePath = Path.Combine(wwwRootPath, obj.ImageUrl.TrimStart('\\'));
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        // Delete the image file
+                        System.IO.File.Delete(imagePath);
+                    }
+                }
                 await _unitOfWork.Product.RemoveAsync(obj);
                 await _unitOfWork.SaveAsync();
             }
@@ -83,6 +97,12 @@ namespace Sticker_web.Services
                 string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
                 string productPath = Path.Combine(wwwRootPath, @"images\product\");
 
+                // Ensure the directory exists
+                if (!Directory.Exists(productPath))
+                {
+                    Directory.CreateDirectory(productPath);
+                }
+
                 if (!string.IsNullOrEmpty(productVM.Product.ImageUrl))
                 {
                     var oldImagePath = Path.Combine(wwwRootPath, productVM.Product.ImageUrl.TrimStart('\\'));
@@ -91,6 +111,7 @@ namespace Sticker_web.Services
                         System.IO.File.Delete(oldImagePath);
                     }
                 }
+
                 using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
                 {
                     file.CopyTo(fileStream);
@@ -101,5 +122,6 @@ namespace Sticker_web.Services
             }
             return productVM;
         }
+
     }
 }
