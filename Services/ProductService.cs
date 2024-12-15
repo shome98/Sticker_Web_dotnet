@@ -1,7 +1,7 @@
 ﻿using Sticker_Web_dotnet.Repository.Interfaces;
 using Sticker_Web_dotnet.Models;
 using Sticker_Web_dotnet.Models.ViewModels;
-using Sticker_web.Services.Interfaces;
+using Sticker_Web_dotnet.Services.Interfaces;
 
 namespace Sticker_web.Services
 {
