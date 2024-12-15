@@ -1,11 +1,17 @@
 using Microsoft.EntityFrameworkCore;
+using Sticker_web.Services;
 using Sticker_Web_dotnet.Data;
+using Sticker_Web_dotnet.Repository;
+using Sticker_Web_dotnet.Repository.Interfaces;
+using Sticker_Web_dotnet.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection1")));
+builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+builder.Services.AddScoped<ICategoryService,CategoryService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
