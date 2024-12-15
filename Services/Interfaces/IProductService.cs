@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Sticker_Web_dotnet.Models;
+﻿using Sticker_Web_dotnet.Models;
 using Sticker_Web_dotnet.Models.ViewModels;
 
-namespace Sticker_web.Services.Interfaces
+namespace Sticker_Web_dotnet.Services.Interfaces
 {
     public interface IProductService
     {

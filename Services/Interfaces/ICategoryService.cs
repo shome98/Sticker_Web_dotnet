@@ -1,6 +1,6 @@
 ﻿using Sticker_Web_dotnet.Models;
 
-namespace Sticker_web.Services.Interfaces
+namespace Sticker_Web_dotnet.Services.Interfaces
 {
     public interface ICategoryService
     {
