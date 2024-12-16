@@ -162,6 +162,7 @@ namespace Sticker_Web_dotnet.Areas.Identity.Pages.Account
                 user.State = Input.State;
                 user.PostalCode = Input.PostalCode;
                 user.PhoneNumber = Input.PhoneNumber;
+                //user.EmailConfirmed=True
 
                 if (!String.IsNullOrEmpty(Input.Role))
                 {
