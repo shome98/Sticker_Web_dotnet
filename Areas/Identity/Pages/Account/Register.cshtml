@@ -62,7 +62,7 @@
                         <label asp-for="Input.PhoneNumber">Phone</label>
                         <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                     </div>
-                    @if (User.IsInRole(SD.Role_Admin))
+                    @if (User.IsInRole(Sticker_Web_dotnet.Utility.SD.Role_Admin))
                     {
                         <div class="form-floating mb-3">
                             <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select">
