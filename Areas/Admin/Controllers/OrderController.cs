@@ -8,7 +8,7 @@ using Stripe.Checkout;
 using Stripe;
 using System.Security.Claims;
 
-namespace Sticker_Web_dotnet.Controllers
+namespace Sticker_Web_dotnet.Areas.Admin.Controllers
 {
     [Authorize]
     public class OrderController : Controller

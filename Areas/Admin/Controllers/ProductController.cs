@@ -6,7 +6,7 @@ using Sticker_Web_dotnet.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Sticker_Web_dotnet.Utility;
 
-namespace Sticker_Web_dotnet.Controllers
+namespace Sticker_Web_dotnet.Areas.Admin.Controllers
 {
     [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Vendor)]
     public class ProductController : Controller

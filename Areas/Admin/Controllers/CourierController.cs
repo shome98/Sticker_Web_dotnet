@@ -4,7 +4,7 @@ using Sticker_Web_dotnet.Models;
 using Sticker_Web_dotnet.Repository.Interfaces;
 using Sticker_Web_dotnet.Utility;
 
-namespace Sticker_Web_dotnet.Controllers
+namespace Sticker_Web_dotnet.Areas.Admin.Controllers
 {
     [Authorize(Roles = SD.Role_Admin)]
     public class CourierController : Controller
