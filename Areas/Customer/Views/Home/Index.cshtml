@@ -1,59 +1,48 @@
-﻿@model IEnumerable<Sticker_Web_dotnet.Models.Product>
-
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+﻿@model IEnumerable<Product>
+<style>
+	.truncate-6-lines {
+		display: -webkit-box;
+		-webkit-line-clamp: 6;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		height: 9em;
+	}
+	.row-centered {
+		justify-content: center;
+	}
+	.col-centered {
+		display: flex;
+		align-items: center;
+	}
+</style>
+<div class="row pb-3 row-centered">
+	@foreach (var product in Model)
+	{
+		<div class="col-lg-3 col-sm-6 col-centered">
+			<div class="row p-2">
+				<div class="col-12 p-1">
+					<div class="card border-0 p-3 shadow border-top border-5 rounded h-100">
+						<img src="@product.ImageUrl" class="card-img-top" style="height:350px; object-fit:cover;" />
+						<div class="card-body pb-0 d-flex flex-column">
+							<div class="pl-1 mb-auto">
+								<p class="card-title h5 text-dark opacity-75 text-uppercase text-center">@product.Name</p>
+								<p class="card-title truncate-6-lines text-secondary text-center">@product.Description</p>
+							</div>
+							<div class="pl-1">
+								<p class="text-dark opacity-75 text-center">
+									Product Price: <span>₹ @product.Price</span>
+								</p>
+							</div>
+							<div class="mt-auto">
+								<a asp-action="Details" asp-route-productId="@product.Id" class="btn btn-primary bg-gradient border-0 form-control">
+									Details
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+</div>
