@@ -3,9 +3,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Sticker_Web_dotnet.Models.ViewModels;
 using Sticker_Web_dotnet.Models;
 using Sticker_Web_dotnet.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Sticker_Web_dotnet.Utility;
 
 namespace Sticker_Web_dotnet.Controllers
 {
+    [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Vendor)]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;

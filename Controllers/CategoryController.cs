@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Sticker_Web_dotnet.Models;
 using Sticker_Web_dotnet.Services.Interfaces;
+using Sticker_Web_dotnet.Utility;
 
 namespace Sticker_Web_dotnet.Controllers
 {
+    [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Vendor)]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;
