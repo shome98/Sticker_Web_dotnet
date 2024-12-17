@@ -7,7 +7,7 @@ using Sticker_Web_dotnet.Utility;
 using Stripe.Checkout;
 using System.Security.Claims;
 
-namespace Sticker_Web_dotnet.Controllers
+namespace Sticker_Web_dotnet.Areas.Customer.Controllers
 {
     [Authorize]
     public class CartController : Controller
@@ -36,7 +36,7 @@ namespace Sticker_Web_dotnet.Controllers
                 foreach (var cart in ShoppingCartVM.ShoppingCartList)
                 {
                     cart.Price = GetPrice(cart);
-                    ShoppingCartVM.OrderHeader.OrderTotal += (cart.Price * cart.Count);
+                    ShoppingCartVM.OrderHeader.OrderTotal += cart.Price * cart.Count;
                 }
 
                 return View(ShoppingCartVM);
@@ -72,7 +72,7 @@ namespace Sticker_Web_dotnet.Controllers
                 foreach (var cart in ShoppingCartVM.ShoppingCartList)
                 {
                     cart.Price = GetPrice(cart);
-                    ShoppingCartVM.OrderHeader.OrderTotal += (cart.Price * cart.Count);
+                    ShoppingCartVM.OrderHeader.OrderTotal += cart.Price * cart.Count;
                 }
 
                 return View(ShoppingCartVM);
@@ -113,7 +113,7 @@ namespace Sticker_Web_dotnet.Controllers
                 foreach (var cart in ShoppingCartVM.ShoppingCartList)
                 {
                     cart.Price = GetPrice(cart);
-                    ShoppingCartVM.OrderHeader.OrderTotal += (cart.Price * cart.Count);
+                    ShoppingCartVM.OrderHeader.OrderTotal += cart.Price * cart.Count;
                 }
 
                 ShoppingCartVM.OrderHeader.PaymentStatus = SD.PaymentStatusPending;
