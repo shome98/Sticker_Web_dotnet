@@ -10,6 +10,7 @@ using System.Security.Claims;
 
 namespace Sticker_Web_dotnet.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     [Authorize]
     public class OrderController : Controller
     {
