@@ -38,6 +38,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+//SeedDatabase();
 app.UseHttpsRedirection();
 StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 app.UseRouting();
@@ -54,3 +55,12 @@ app.MapControllerRoute(
 
 
 app.Run();
+
+/* this below could needed to be uncommented when first time needs for seeding
+void SeedDatabase() {
+    using (var scope = app.Services.CreateScope()) {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        dbInitializer.Initialize();
+    }
+}
+*/
