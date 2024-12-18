@@ -198,6 +198,7 @@ namespace Sticker_Web_dotnet.Areas.Customer.Controllers
                         await _unitOfWork.OrderHeader.UpdateStatusAsync(id, SD.StatusApproved, SD.PaymentStatusApproved);
                         await _unitOfWork.SaveAsync();
                     }
+                    //HttpContext.Session.Clear();
                 }
 
                 var shoppingCarts = await _unitOfWork.ShoppingCart.GetAllAsync(u => u.ApplicationUserId == orderHeader.ApplicationUserId);
