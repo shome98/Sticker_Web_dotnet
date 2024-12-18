@@ -10,6 +10,7 @@ using System.Security.Claims;
 namespace Sticker_Web_dotnet.Areas.Customer.Controllers
 {
     [Authorize]
+    [Area("Customer")]
     public class CartController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
